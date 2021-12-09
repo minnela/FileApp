@@ -5,7 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 import entity.FileEntity;
 
 public interface FileService {
-	void upload(MultipartFile file);
+	FileEntity upload(MultipartFile file, String category);
 	List<FileEntity> findAllFiles();
 	List<FileEntity> findFilesByCategory(String category);
 	void download(MultipartFile file);

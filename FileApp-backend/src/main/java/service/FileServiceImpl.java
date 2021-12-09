@@ -15,27 +15,26 @@ public class FileServiceImpl implements FileService{
 	private FileRepository fileRepository;
 
 	@Override
-	public void upload(MultipartFile file) {
-		// TODO Auto-generated method stub
-		
+	public FileEntity upload(MultipartFile file, String category) {
+		String extension = file.getOriginalFilename().split("\\.")[1];
+		FileEntity fileEnt = new FileEntity(file.getName(), category, extension, file);
+		fileRepository.save(fileEnt);
+		return fileEnt;
 	}
 
 	@Override
 	public List<FileEntity> findAllFiles() {
-		// TODO Auto-generated method stub
-		return null;
+		return fileRepository.findAll();
 	}
 
 	@Override
 	public List<FileEntity> findFilesByCategory(String category) {
-		// TODO Auto-generated method stub
-		return null;
+		return fileRepository.findFilesByCategory(category);
 	}
 
 	@Override
 	public void download(MultipartFile file) {
 		// TODO Auto-generated method stub
-		
 	}
 
 }

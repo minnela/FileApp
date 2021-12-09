@@ -8,20 +8,23 @@ import org.hibernate.annotations.Table;
 import org.springframework.data.annotation.Id;
 import org.springframework.web.multipart.MultipartFile;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
 
 @Data
-@NoArgsConstructor
+@RequiredArgsConstructor
 @Table(appliesTo = "fileEntity")
 public class FileEntity {
 	@Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
-	private String name;
-	private String category;
-	private String extension;
+	@NonNull private String name;
+	@NonNull private String category;
+	@NonNull private String extension;
 	private String url;
-	private MultipartFile file;
+	@NonNull private MultipartFile file;
 
 }

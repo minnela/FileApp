@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import entity.FileEntity;
 
 @Repository
-public interface FileRepository extends JpaRepository<Long, FileEntity>{
-
+public interface FileRepository extends JpaRepository<FileEntity, Long>{
+  List<FileEntity> findFilesByCategory(String category);
 }
